@@ -7,11 +7,14 @@ Based on [https://github.com/tomasen/realip](https://github.com/tomasen/realip).
 
 ### Features
 
-- Follows the rule of X-Real-IP
-- Follows the rule of X-Forwarded-For
-- Exclude local or private address
+- Parses IPs from `X-Real-IP`
+- Parses IPs from `X-Forwarded-For`
+- Excludes local/private address by default
+- Custom filtering options for `X-Forwarded-For` IPs
 
-## Example
+## Examples
+
+### Basic usage
 
 ```go
 package main
@@ -22,6 +25,21 @@ func (h *Handler) ServeIndexPage(w http.ResponseWriter, r *http.Request, ps http
 	clientIP := rip.FromRequest(r, nil)
 	log.Println("GET / from", clientIP)
 }
+```
+
+### AWS ELB
+
+```go
+clientIP := rip.FromRequest(r, rip.FilterAWS)
+```
+
+### Custom Filtering
+
+```go
+clientIP := rip.FromRequest(r, func(ips []string) (string, bool) {
+	// your custom logic here
+	return "127.0.0.1", true
+})
 ```
 
 ## Contributing
