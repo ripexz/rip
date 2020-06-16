@@ -14,7 +14,7 @@ Based on [https://github.com/tomasen/realip](https://github.com/tomasen/realip).
 
 ## Examples
 
-### Basic usage
+### Basic usage
 
 ```go
 package main
