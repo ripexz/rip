@@ -68,8 +68,7 @@ func FilterPublicAddress(ips []string) (string, bool) {
 // FilterAWS returns the last address in the X-Forwarded-For chain.
 // This is intended for services behind AWS ELB as it appends the client
 // IP address if one is already provided, to prevent spoofing.
-// For more info see:
-// https://github.com/awsdocs/elb-classic-load-balancers-user-guide/commit/0aa03ef9e048169e18e98d9cc76b32a24df6d29e#diff-539d8b2a6492a6efbfe0ad69b9d61bbf
+// For more info see: https://git.io/Jf5nh
 func FilterAWS(ips []string) (string, bool) {
 	if len(ips) == 0 {
 		return "", false
