@@ -21,9 +21,9 @@ jobs:
         go get -v -t -d ./...
 
     - name: Lint
-      run: |
-        go get github.com/golangci/golangci-lint/cmd/golangci-lint
-        golangci-lint run ./...
+      uses: golangci/golangci-lint-action@v1
+      with:
+        version: v1.26
 
     - name: Build
       run: |
