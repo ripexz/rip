@@ -6,7 +6,7 @@ linters:
   disable-all: true
   enable:
     - govet
-    - golint
+    - revive
     - varcheck
     - structcheck
     - errcheck
